@@ -2,7 +2,7 @@
 /* |  _ \_   _|  Derek Taylor (DistroTube) */
 /* | | | || |  	http://www.youtube.com/c/DistroTube */
 /* | |_| || |  	http://www.gitlab.com/dwt1/ */
-/* |____/ |_|  	*/ 
+/* |____/ |_|  	*/
 
 /* See LICENSE file for copyright and license details. */
 /* appearance */
@@ -18,21 +18,21 @@ static const int vertpadbar           = 15;        /* vertical padding for statu
  * Arch repos and is listed as a dependency for this build. JoyPixels is also
  * a hard dependency and makes colored fonts and emojis possible.
  */
-static const char *fonts[]            = {"Mononoki Nerd Font:size=11:antialias=true:autohint=true",
-                                         "Source-Code-Pro:size=20:antialias=true:autohint=true",
-                                         "JoyPixels:size=15:antialias=true:autohint=true"
+static const char *fonts[]            = {"Mononoki Nerd Font:size=18:antialias=true:autohint=true",
+                                         "Source Code Pro Bold:size=24:antialias=true:autohint=true",
+                                         "JoyPixels:size=20:antialias=true:autohint=true"
 										};
 static const char col_gray1[]         = "#292d3e";
 static const char col_gray2[]         = "#292d3e"; /* border color unfocused windows */
 static const char col_gray3[]         = "#96b5b4";
 static const char col_gray4[]         = "#d7d7d7";
 static const char col_cyan[]          = "#924441"; /* border color focused windows and tags */
-/* bar opacity 
+/* bar opacity
  * 0xff is no transparency.
  * 0xee adds wee bit of transparency.
  * Play with the value to get desired transparency.
  */
-static const unsigned int baralpha    = 0xee; 
+static const unsigned int baralpha    = 0xee;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
 	/*               fg         bg         border   */
@@ -46,8 +46,8 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-/* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+//static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 
 static const Rule rules[] = {
@@ -56,8 +56,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Gimp",     NULL,       NULL,       0,            1,          -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,          -1 },
 };
 
 /* layout(s) */
@@ -133,7 +133,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,     XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,     XK_period, tagmon,         {.i = +1 } },
-	
+
     /* Apps Launched with SUPER + ALT + KEY */
 	{ MODKEY|Mod1Mask,        XK_b,    spawn,          CMD("tabbed -r 2 surf -pe x '.surf/html/homepage.html'") },
 	{ MODKEY|Mod1Mask,        XK_c,    spawn,          CMD("st-e cmus") },
@@ -144,15 +144,15 @@ static Key keys[] = {
 //#	{ MODKEY|Mod1Mask,        XK_l,    spawn,          CMD("st -e lynx gopher://distro.tube") },
 //#	{ MODKEY|Mod1Mask,        XK_n,    spawn,          CMD("st -e newsboat") },
 //#	{ MODKEY|Mod1Mask,        XK_r,    spawn,          CMD("st -e rtv") },
-	
+
     /* Dmenu scripts launched with ALT + CTRL + KEY */
-	{ Mod1Mask|ControlMask, XK_e,      spawn,          CMD("./.dmenu/dmenu-edit-configs.sh") },
+//	{ Mod1Mask|ControlMask, XK_e,      spawn,          CMD("./.dmenu/dmenu-edit-configs.sh") },
 	{ Mod1Mask|ControlMask, XK_m,      spawn,          CMD("./.dmenu/dmenu-sysmon.sh") },
 	{ Mod1Mask|ControlMask, XK_p,      spawn,          CMD("passmenu") },
-	{ Mod1Mask|ControlMask, XK_r,      spawn,          CMD("./.dmenu/dmenu-reddio.sh") },
-	{ Mod1Mask|ControlMask, XK_s,      spawn,          CMD("./.dmenu/dmenu-surfraw.sh") },
+	{ Mod1Mask|ControlMask, XK_c,      spawn,          CMD("chromium") },
+	{ Mod1Mask|ControlMask, XK_e,      spawn,          CMD("emacs") },
 	{ Mod1Mask|ControlMask, XK_i,      spawn,          CMD("./.dmenu/dmenu-scrot.sh") },
-    
+
 	TAGKEYS(                  XK_1,          0)
 	TAGKEYS(                  XK_2,          1)
 	TAGKEYS(                  XK_3,          2)
@@ -163,7 +163,7 @@ static Key keys[] = {
 	TAGKEYS(                  XK_8,          7)
 	TAGKEYS(                  XK_9,          8)
 	{ MODKEY|ShiftMask,       XK_q,	   quit,		   {0} },
-    { MODKEY|ShiftMask,       XK_r,    quit,           {1} }, 
+    { MODKEY|ShiftMask,       XK_r,    quit,           {1} },
 };
 
 /* button definitions */
