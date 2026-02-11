@@ -10,8 +10,8 @@ static const unsigned int borderpx    = 4;        /* border pixel of windows */
 static const unsigned int snap        = 32;       /* snap pixel */
 static const unsigned int gappx       = 10;        /* pixel gap between clients */
 static const int showbar              = 1;        /* 0 means no bar */
-static const int topbar               = 0;        /* 0 means bottom bar */
-static const int horizpadbar          = 20;        /* horizontal padding for statusbar */
+static const int topbar               = 1;        /* 0 means bottom bar */
+static const int horizpadbar          = 16;        /* horizontal padding for statusbar */
 static const int vertpadbar           = 15;        /* vertical padding for statusbar */
 /* Mononoki Nerd Font must be installed from AUR nerd-fonts-complete.
  * Otherwise, your default font will be Hack which is found in the standard
@@ -46,7 +46,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11" };
 //static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 
@@ -61,7 +61,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.30; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
@@ -87,12 +87,18 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+static const char dmenufont[]       = "DeJaVuSans Mono:size=21";
+static const char col_blue2[]       = "#222233";
+static const char col_white[]       = "#ffffff";
+static const char col_black[]       = "#000000";
+
+
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]    = { "dmenu_run", "-p", "Run: ", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-p", "Run:", NULL };
 /* An alternative way to launch st along with the fish shell */
-/* static const char *termcmd[]     = { "tilix", "-e bash", NULL }; */
-static const char *termcmd[]     = { "tilix", NULL };
+/* static const char *termcmd[]     = { "terminator", NULL }; */
+static const char *termcmd[]     = { "terminator", NULL };
 //static const char *tabtermcmd[]  = { "tabbed", "-r 2", "st", "-w", "''", NULL };
 
 static Key keys[] = {
@@ -125,9 +131,6 @@ static Key keys[] = {
 	{ MODKEY,               XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,               XK_g,      setlayout,      {.v = &layouts[3]} },
 
-	{ MODKEY,               XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,     XK_0,      tag,            {.ui = ~0 } },
-
     /* Switching between monitors */
 	{ MODKEY,               XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,               XK_period, focusmon,       {.i = +1 } },
@@ -135,10 +138,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_period, tagmon,         {.i = +1 } },
 
     /* Apps Launched with SUPER + ALT + KEY */
-	{ MODKEY|Mod1Mask,        XK_b,    spawn,          CMD("tabbed -r 2 surf -pe x '.surf/html/homepage.html'") },
-	{ MODKEY|Mod1Mask,        XK_c,    spawn,          CMD("st-e cmus") },
+//	{ MODKEY|Mod1Mask,        XK_b,    spawn,          CMD("tabbed -r 2 surf -pe x '.surf/html/homepage.html'") },
+//	{ MODKEY|Mod1Mask,        XK_c,    spawn,          CMD("st-e cmus") },
 //	{ MODKEY|Mod1Mask,        XK_e,    spawn,          CMD("st -e emacsclient -c -a emacs") },
-	{ MODKEY|Mod1Mask,        XK_f,    spawn,          CMD("st -e ranger") },
+//	{ MODKEY|Mod1Mask,        XK_f,    spawn,          CMD("st -e ranger") },
 //#	{ MODKEY|Mod1Mask,        XK_h,    spawn,          CMD("st -e htop") },
 //#	{ MODKEY|Mod1Mask,        XK_i,    spawn,          CMD("st -e irssi") },
 //#	{ MODKEY|Mod1Mask,        XK_l,    spawn,          CMD("st -e lynx gopher://distro.tube") },
@@ -147,21 +150,23 @@ static Key keys[] = {
 
     /* Dmenu scripts launched with ALT + CTRL + KEY */
 //	{ Mod1Mask|ControlMask, XK_e,      spawn,          CMD("./.dmenu/dmenu-edit-configs.sh") },
-	{ Mod1Mask|ControlMask, XK_m,      spawn,          CMD("./.dmenu/dmenu-sysmon.sh") },
+	{ Mod1Mask|ControlMask, XK_m,      spawn,          CMD("terminator -e bpytop") },
 	{ Mod1Mask|ControlMask, XK_p,      spawn,          CMD("passmenu") },
 	{ Mod1Mask|ControlMask, XK_c,      spawn,          CMD("chromium") },
 	{ Mod1Mask|ControlMask, XK_e,      spawn,          CMD("emacs") },
-	{ Mod1Mask|ControlMask, XK_i,      spawn,          CMD("./.dmenu/dmenu-scrot.sh") },
+	{ Mod1Mask|ControlMask, XK_i,      spawn,          CMD("flameshot gui") },
 
-	TAGKEYS(                  XK_1,          0)
-	TAGKEYS(                  XK_2,          1)
-	TAGKEYS(                  XK_3,          2)
-	TAGKEYS(                  XK_4,          3)
-	TAGKEYS(                  XK_5,          4)
-	TAGKEYS(                  XK_6,          5)
-	TAGKEYS(                  XK_7,          6)
-	TAGKEYS(                  XK_8,          7)
-	TAGKEYS(                  XK_9,          8)
+	TAGKEYS(                  XK_grave,      0)
+	TAGKEYS(                  XK_1,          1)
+	TAGKEYS(                  XK_2,          2)
+	TAGKEYS(                  XK_3,          3)
+	TAGKEYS(                  XK_4,          4)
+	TAGKEYS(                  XK_5,          5)
+	TAGKEYS(                  XK_6,          6)
+	TAGKEYS(                  XK_7,          7)
+	TAGKEYS(                  XK_8,          8)
+	TAGKEYS(                  XK_9,          9)
+	TAGKEYS(                  XK_0,          10)
 	{ MODKEY|ShiftMask,       XK_q,	   quit,		   {0} },
     { MODKEY|ShiftMask,       XK_r,    quit,           {1} },
 };
@@ -182,5 +187,3 @@ static Button buttons[] = {
 	{ ClkTagBar,       MODKEY,      Button1,        tag,            {0} },
 	{ ClkTagBar,       MODKEY,      Button3,        toggletag,      {0} },
 };
-
-
