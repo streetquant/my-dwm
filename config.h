@@ -148,8 +148,7 @@ static Key keys[] = {
 //#	{ MODKEY|Mod1Mask,        XK_n,    spawn,          CMD("st -e newsboat") },
 //#	{ MODKEY|Mod1Mask,        XK_r,    spawn,          CMD("st -e rtv") },
 
-    /* Dmenu scripts launched with ALT + CTRL + KEY */
-//	{ Mod1Mask|ControlMask, XK_e,      spawn,          CMD("./.dmenu/dmenu-edit-configs.sh") },
+    /* ALT + CTRL launchers */
 	{ Mod1Mask|ControlMask, XK_m,      spawn,          CMD("terminator -e bpytop") },
 	{ Mod1Mask|ControlMask, XK_p,      spawn,          CMD("passmenu") },
 	{ Mod1Mask|ControlMask, XK_c,      spawn,          CMD("chromium") },

@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/arch/my-dwm/logs/.860ce3ec97a2cf31286fbcbdea4365d2dcf06c09-audit.json",
+    "files": [
+        {
+            "date": 1770796573418,
+            "name": "/home/arch/my-dwm/logs/error-2026-02-11.log",
+            "hash": "33794c4545d0c760b3d096ffe885f2a55206f2d0b237d229dce8bb754b2c313e"
+        }
+    ],
+    "hashType": "sha256"
+}

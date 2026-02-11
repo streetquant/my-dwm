@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/arch/my-dwm/logs/.88c114baeb58357f921959425911ccbc5d2e95f8-audit.json",
+    "files": [
+        {
+            "date": 1770796573417,
+            "name": "/home/arch/my-dwm/logs/application-2026-02-11.log",
+            "hash": "bf06f716a49c6b4ba2d5053c5c0191fe408f5dc55f2bf470d3dfa0384761557f"
+        }
+    ],
+    "hashType": "sha256"
+}
